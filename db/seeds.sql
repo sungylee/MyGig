@@ -1,1 +1,7 @@
-placeholder
+insert into projects (projectName, projectDesc, product,startDate, duration,reqSkills) values ("testProj", "Just testing","the product", "2018-12-19", 2,"java");
+
+insert into users (SSO, password,  firstName, lastName, currentPosition, manager_SSO,  email_addr) values (212000000, "password124", "jay", "cha", "Sr. Site Reliability Engineer", "2121110000", "jay,cha@ge.com");
+insert into users (SSO, password,  firstName, lastName, currentPosition, manager_SSO,  email_addr) values (212000001, "password125", "ronald", "chaudry", "Site Reliability Engineer", "2121110000", "ronald.chaudry@ge.com");
+insert into users (SSO, password,  firstName, lastName, currentPosition, manager_SSO, email_addr) values (212000003, "password126", "siraj", "mohamed", "Sr. Network Operations Engineer", "2121110002", "siraj.mohamed@ge.com");
+insert into users (SSO, password,  firstName, lastName, currentPosition, manager_SSO, email_addr) values (212000004, "password127", "john", "steskal", "Sr. Site Reliability Engineer", "2121110003", "john.steskal@ge.com");
+insert into users (SSO, password,  firstName, lastName, currentPosition, manager_SSO, email_addr) values (212000005,"password128",  "sung", "lee", "Sr. Site Reliability Engineer", "2121110001","sung.lee@ge.com");
