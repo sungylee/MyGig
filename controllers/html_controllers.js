@@ -5,6 +5,8 @@ router.get('/gigs', function(req, res) {
     res.send("Hitting /gigs");
     console.log("Hitting /gigs");
     //res.sendFile( path.join(__dirname, "..", "public", "<html file>") );
+
+    // Can be rendered using index handlebars or whatever of your choosing
 });
 
 // 'catch-all' clause.  Display home page
