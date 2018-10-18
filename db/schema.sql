@@ -36,7 +36,7 @@ create table Applications (
     currentStatus VARCHAR (50),
 
     primary key (applicationID),
-    FOREIGN KEY (employeeID) references users (SSO),
+    FOREIGN KEY (employeeID) references users (SSO)
 );
 
 create table projects (
