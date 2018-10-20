@@ -61,4 +61,4 @@ typings/
 .next
 
 # Sequealize credential 
-config/config.json
+config.json

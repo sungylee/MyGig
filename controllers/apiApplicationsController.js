@@ -4,6 +4,8 @@ var db = require("../models");
 // GET all projects
 router.get('/applications', function(req, res) {
     console.log("Hitting get - /api/applications");
+
+    // ToDo:  req.body should be used for qualifier.
     db.Application.findAll({
     }).then(function(applications) {
         console.log(applications);
@@ -36,7 +38,7 @@ router.post('/applications', function(req, res) {
 router.put('/applications/:applicationId', function(req, res) {
     console.log(`Hitting put - /api/applications/:${req.params.applicationId}`);
     console.log(req.body);
-    db.Applicatoin.update(
+    db.Application.update(
         req.body,
         {
             where: {
