@@ -10,19 +10,19 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [1,200]
-            },
-            description: DataTypes.TEXT,
-            product: {
+            }
+        },
+        description: DataTypes.TEXT,
+        product: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
                     len: [1,200]
-                },
-                projectStartDate: DataTypes.DATE,
-                projectDuration: DataTypes.INTEGER,
-                skills:DataTypes.TEXT
-            }
-        }
+                }
+        },
+        projectStartDate: DataTypes.DATE,
+        projectDuration: DataTypes.INTEGER,
+        skills: DataTypes.TEXT
     });
 
     Project.associate = function(models) {
