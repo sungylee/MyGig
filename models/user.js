@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
-    userID: {
+    employeeId: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
 		allowNull: false
@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1,50]
       }
     },
+<<<<<<< HEAD
   passWord: {
     type: DataTypes.STRING,
       allowNull: false,
@@ -27,6 +28,9 @@ module.exports = function(sequelize, DataTypes) {
       }
   },
 	currentPostion: {
+=======
+	currentPosition: {
+>>>>>>> 38b90570ed936fd5c06dead644abfa9674d5b531
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -46,7 +50,7 @@ module.exports = function(sequelize, DataTypes) {
     },
 	phone: {
 		type: DataTypes.INTEGER,
-		allowNull: false
+		allowNull: true
 	},
 	skill1: {
       type: DataTypes.STRING,
