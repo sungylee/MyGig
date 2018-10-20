@@ -19,6 +19,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1,50]
       }
     },
+  passWord: {
+    type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1,255]
+      }
+  },
 	currentPostion: {
       type: DataTypes.STRING,
       allowNull: false,
