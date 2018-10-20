@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1,50]
       }
     },
-	currentPostion: {
+	currentPosition: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
