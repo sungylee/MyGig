@@ -29,10 +29,10 @@ app.set("view engine", "handlebars");
 // Break route/controllers into html and API portions
 // Using path.join to support path on non-*nix paltforms.
 var routeDir = path.join(__dirname, "controllers");
-var apiRoutes = require( path.join(routeDir, "api_controllers.js") );
-var htmlRoutes = require( path.join(routeDir, "html_controllers.js") );
+var apiProjectsRoutes = require( path.join(routeDir, "apiProjectsController.js") );
+var htmlRoutes = require( path.join(routeDir, "htmlController.js") );
 
-app.use('/api', apiRoutes);
+app.use('/api', apiProjectsRoutes);
 app.use('/', htmlRoutes);
 
 db.sequelize.sync().then(function() {
