@@ -30,9 +30,13 @@ app.set("view engine", "handlebars");
 // Using path.join to support path on non-*nix paltforms.
 var routeDir = path.join(__dirname, "controllers");
 var apiProjectsRoutes = require( path.join(routeDir, "apiProjectsController.js") );
+var apiApplicationsRoutes = require( path.join(routeDir, "apiApplicationsController.js") );
+var apiUsersRoutes = require( path.join(routeDir, "apiUsersController.js") );
 var htmlRoutes = require( path.join(routeDir, "htmlController.js") );
 
 app.use('/api', apiProjectsRoutes);
+app.use('/api', apiApplicationsRoutes);
+app.use('/api', apiUsersRoutes);
 app.use('/', htmlRoutes);
 
 db.sequelize.sync().then(function() {

@@ -2,18 +2,18 @@ var router = require("express").Router();
 var db = require("../models");
 
 // GET all projects
-router.get('/projects', function(req, res) {
-    console.log("Hitting get - /api/projects");
-    db.Project.findAll({
-    }).then(function(projects) {
-        console.log(projects);
-        res.json(projects);
+router.get('/users', function(req, res) {
+    console.log("Hitting get - /api/users");
+    db.User.findAll({
+    }).then(function(users) {
+        console.log(users);
+        res.json(users);
     });
 });
 
 // POST a new project
-router.post('/projects', function(req, res) {
-    console.log("Hitting post - /api/projects");
+router.post('/users', function(req, res) {
+    console.log("Hitting post - /api/users");
     console.log(req.body);
     /*
         Sample JSON input
@@ -26,26 +26,26 @@ router.post('/projects', function(req, res) {
             "skills": "java, javascript, python"
         }
     */
-    db.Project.create(req.body)
-    .then(function(project) {
-        res.json(project);
+    db.User.create(req.body)
+    .then(function(user) {
+        res.json(user);
     });
 });
 
 // UPDATE a given project details
-router.put('/projects/:projectId', function(req, res) {
-    console.log(`Hitting put - /api/projects/:${req.params.projectId}`);
+router.put('/user/:employeeId', function(req, res) {
+    console.log(`Hitting put - /api/projects/:${req.params.employeeId}`);
     console.log(req.body);
-    db.Project.update(
+    db.User.update(
         req.body,
         {
             where: {
-                projectId: req.params.projectId
+                projectId: req.params.employeeId
             }
         }
-    ).then(function(project) {
+    ).then(function(user) {
         // returns [ number_of_rows ]
-        res.json(project);
+        res.json(user);
     });
 });
 
