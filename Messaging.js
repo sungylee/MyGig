@@ -11,7 +11,7 @@ class SendMessage{
     sendSMS (ph,msg) {
         return new Promise((resolve,reject) => {
             client.messages.create(
-                '678-231-2489',
+                '17706915276',
                 ph,
                 msg
               ).then((message_created) => {
@@ -22,21 +22,24 @@ class SendMessage{
         });
     };
 
-    sendEmail (eadd,msg){
+    sendEmail (eadd,sub,msg){
         return new Promise((resolve,reject) => {
             var emailData = {
-                'FromEmail': 'mygGig@GE.com',
+                'FromEmail': 'john.steskal@ge.com',
                 'FromName': 'MyGig',
-                'Subject': 'Test with the NodeJS Mailjet wrapper',
-                'Text-part': 'Hello NodeJs !',
+                'Subject': sub,
+                'Text-part': msg,
                 'Recipients': [{'Email': eadd}]
-            }
-            mailjet.sendContent('sender@example.com',
-         ['recipient1@example.com', 'bcc:recipient2@example.com'],
-         'This is a test !',
-         'text',
-         'Well, this is working !').
+            };
+            sendEmail.request(emailData).then((response) => {
+                resolve(response);
+            })
+            .catch((err) => {
+                reject(err);
+            });
 
         });
     }
 }
+
+module.exports = SendMessage;
