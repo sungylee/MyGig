@@ -104,7 +104,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   User.associate = function(models) {
-    User.belongsToMany(models.Project, { through: models.Application });
+    User.belongsToMany(models.Project,
+        {
+            through: models.Application,
+            foreignKey: 'employeeId' 
+        });
   };
 
   return User;

@@ -5,8 +5,14 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        managerApproval: DataTypes.BOOLEAN,
-        pmApproval: DataTypes.BOOLEAN,
+        managerApproval: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        pmApproval: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
         status: {
             type: DataTypes.STRING,
             validate: {

@@ -18,16 +18,13 @@ router.post('/applications', function(req, res) {
     console.log("Hitting post - /api/applications");
     console.log(req.body);
     /*
-        Sample JSON input
+        ToDo: Should add a better example here
         {
-            "name": "BunnyBuild",
-            "description": "Make as many bunnies as possible.",
-            "product": "Animal Zoo",
-            "projectStartDate": "2008-12-1 00:00:00",
-            "projectDuration": 3,
-            "skills": "java, javascript, python"
-        }
+            "ProjectProjectID" : 1
+            "UserEmployeeId": 212000000
+         }
     */
+
     db.Application.create(req.body)
     .then(function(application) {
         res.json(application);
