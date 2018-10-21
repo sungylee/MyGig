@@ -21,5 +21,19 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
 
+    Application.associate = function(models) {
+        Application.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+
+        Application.belongsTo(models.Project, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
     return Application;
 };

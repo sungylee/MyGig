@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Project = sequelize.define("Project", {
-        projectID: {
+        projectId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -25,12 +25,21 @@ module.exports = function(sequelize, DataTypes) {
         skills: DataTypes.TEXT
     });
 
+/*
     Project.associate = function(models) {
-            Project.belongsToMany(models.User,
-                {
-                    through: models.Application,
-                    foreignKey: 'projectId' 
-                });
+        Project.belongsToMany(models.User,
+            {
+                through: models.Application,
+                foreignKey: 'projectId'
+            }
+        );
+    };
+*/
+
+    Project.associate = function(models) {
+        // Associating Author with Posts
+        // When an Author is deleted, also delete any associated Posts
+        Project.hasMany(models.Application);
     };
 
     return Project;

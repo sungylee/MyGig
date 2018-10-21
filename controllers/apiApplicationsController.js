@@ -18,10 +18,10 @@ router.post('/applications', function(req, res) {
     console.log("Hitting post - /api/applications");
     console.log(req.body);
     /*
-        ToDo: Should add a better example here
         {
-            "ProjectProjectID" : 1
-            "UserEmployeeId": 212000000
+            "ProjectProjectId" : 1,
+            "UserEmployeeId": 212000000,
+            "status": "started"
          }
     */
 
@@ -29,6 +29,7 @@ router.post('/applications', function(req, res) {
     .then(function(application) {
         res.json(application);
     });
+    //TODO:  Should build a better query result check in case of failures.
 });
 
 // UPDATE a given project details

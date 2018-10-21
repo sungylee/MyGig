@@ -103,12 +103,20 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+/*
   User.associate = function(models) {
     User.belongsToMany(models.Project,
         {
             through: models.Application,
-            foreignKey: 'employeeId' 
+            foreignKey: 'employeeId'
         });
+  };
+*/
+
+  User.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    User.hasMany(models.Application);
   };
 
   return User;
