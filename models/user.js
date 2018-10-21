@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1,100]
       }
     },
-	managerID: {
+	managerId: {
 		type: DataTypes.INTEGER,
 		allowNull: false
 	},
