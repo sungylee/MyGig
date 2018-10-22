@@ -32,11 +32,13 @@ var routeDir = path.join(__dirname, "controllers");
 var apiProjectsRoutes = require( path.join(routeDir, "apiProjectsController.js") );
 var apiApplicationsRoutes = require( path.join(routeDir, "apiApplicationsController.js") );
 var apiUsersRoutes = require( path.join(routeDir, "apiUsersController.js") );
+var apiNotifyRoutes = require( path.join(routeDir, "apiNotifyController.js") );
 var htmlRoutes = require( path.join(routeDir, "htmlController.js") );
 
 app.use('/api', apiProjectsRoutes);
 app.use('/api', apiApplicationsRoutes);
 app.use('/api', apiUsersRoutes);
+app.use('/api', apiNotifyRoutes);
 app.use('/', htmlRoutes);
 
 //db.sequelize.sync({force: true}).then(function() {

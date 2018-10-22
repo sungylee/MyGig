@@ -28,6 +28,9 @@ router.post('/applications', function(req, res) {
     db.Application.create(req.body)
     .then(function(application) {
         res.json(application);
+    })
+    .catch(function(error) {
+        console.log(error);
     });
     //TODO:  Should build a better query result check in case of failures.
 });
