@@ -1,6 +1,8 @@
 drop database if exists gigazon;
 
 create database gigazon;
+
+/*
 use gigazon;
 create table users (
     employeeID INT (8) not null,
@@ -50,3 +52,5 @@ create table projects (
     skills text (255),
     primary key (projectID)
 );
+
+*/
