@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Application = sequelize.define("Application", {
-        applicationID: {
+        applicationId: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
