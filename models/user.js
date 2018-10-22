@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1,100]
       }
     },
-	managerID: {
+	managerId: {
 		type: DataTypes.INTEGER,
 		allowNull: false
 	},
@@ -103,8 +103,20 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+/*
   User.associate = function(models) {
-    User.belongsToMany(models.Project, { through: models.Application });
+    User.belongsToMany(models.Project,
+        {
+            through: models.Application,
+            foreignKey: 'employeeId'
+        });
+  };
+*/
+
+  User.associate = function(models) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    User.hasMany(models.Application);
   };
 
   return User;
