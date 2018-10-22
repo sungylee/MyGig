@@ -30,7 +30,7 @@ main {
 
 .block-header {
   /* Typography */
-  color: #black;
+  color: black;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-weight: bold;
 }
@@ -49,8 +49,9 @@ main {
 }
 
 /* override bootstrap hover color and border */
-.navbar-default .navbar-nav > li > a:hover {
+.navbar-default .navbar-nav .nav-link .navbar-light > li > a:hover {
   color: #fff;
+  /* color: rgba(0,0,0,.5); */
 }
 
 .navbar {
@@ -61,6 +62,8 @@ background: #3A4851;
     box-shadow: 0 1px 4px rgba(0,0,0,.5);
     position: relative;
 }
+
+
 
 /* media query for nav background color change */
 @media only screen and (max-width: 767px) {
