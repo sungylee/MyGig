@@ -5,7 +5,7 @@ insert into projects (name, description, product, projectStartDate, projectDurat
 insert into projects (name, description, product, projectStartDate, projectDuration, skills, createdAt, updatedAt) values ("Superb project", "Just testing","the product", "2018-12-19", 1, "SQL, java, javascript", now(), now());
 
 -- Sung is manager of all employees
-insert into users (employeeID, firstName, lastName, currentPosition, managerID,  email,  createdAt, updatedAt) values (212000000, "jay", "cha", "Sr. Site Reliability Engineer", "212000005", "jay,cha@ge.com", now(), now());
+insert into users (employeeID, firstName, lastName, currentPosition, managerID,  email,  createdAt, updatedAt) values (212000000, "jay", "cha", "Sr. Site Reliability Engineer", "212000005", "jay.cha@ge.com", now(), now());
 insert into users (employeeID, firstName, lastName, currentPosition, managerID,  email,  createdAt, updatedAt) values (212000001, "ronald", "chaudry", "Site Reliability Engineer", "212000005", "ronald.chaudry@ge.com", now(), now());
 insert into users (employeeID, firstName, lastName, currentPosition, managerID, email, createdAt, updatedAt) values (212000003, "siraj", "mohamed", "Sr. Network Operations Engineer", "212000005", "siraj.mohamed@ge.com", now(), now());
 insert into users (employeeID, firstName, lastName, currentPosition, managerID, email, createdAt, updatedAt) values (212000004, "john", "steskal", "Sr. Site Reliability Engineer", "212000005", "john.steskal@ge.com", now(), now());

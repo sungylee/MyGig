@@ -1,9 +1,10 @@
 var router = require("express").Router();
 var db = require("../models");
+var msgSend = new (require("../Messaging"));
 
-router.get('/notify/manager/:applicationId', function(req, res) {
-    console.log("Hitting post - /api/notify/manager");
-    console.log(req.body);
+router.post('/notify/:role/:applicationId', function(req, res) {
+    console.log(`Hitting post - /api/notify/${req.params.role}/${req.params.applicationId}`);
+    //console.log(req.body);
 
     // req.body.applicationId
     /*
@@ -58,18 +59,37 @@ router.get('/notify/manager/:applicationId', function(req, res) {
         },
         include: [db.User, db.Project]
     }).then(result => {
-        return db.User.findOne({
-            where: {
-                employeeId:  result.User.managerId
-            }
-        })
-    }).then(manager => {
-        console.log(manager);
-        res.json(manager);
+        // Determine who want to notify based on :role.
+        switch (req.params.role) {
+            case 'manager':
+                return db.User.findOne({
+                    where: {
+                        employeeId:  result.User.managerId
+                    }
+                });
+                break;
+            case 'applicant':
+                return result.User;
+                break;
+            default:
+                console.log("Unknown role has been selected");
+        }
+    }).then(notify => {
+        console.log(`trying to send msg to ${notify.email}`);
+        console.log(req.body);
+
+        msgSend.sendEmail(
+            notify.email,
+            req.body.subject,
+            req.body.msg
+        ).then(result => {
+            res.end(`Email sent to ${notify.email}`);
+        }).catch(err => {
+            console.log(err);
+        });
     }).catch(function(error) {
         // Error handling here.
     });
 });
-
 
 module.exports = router;
