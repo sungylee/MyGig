@@ -20,7 +20,7 @@
             <td>{{this.name}}</td>
             <td>{{moment date=this.projectStartDate format="DD/MM/YYYY"}}</td>
             <td>{{this.projectDuration}} week(s)</td>
-            <td><button class="btn btn-secondary" data-projectID="{{this.projectId}}">Apply</button></td>
+            <td><button class="btn btn-secondary apply-button" data-projectID="{{this.projectId}}">Apply</button></td>
         </tr>
         <tr id="cl{{this.projectId}}" class="collapse hide" aria-labelledby="hd{{this.projectId}}" data-parent="#accordion">
             <td colspan="5">

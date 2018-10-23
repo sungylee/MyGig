@@ -37,18 +37,8 @@ $(function(){
         });
     });
 
-    $.get("/api/users")
-    .done(function(data){
-        for (var i = 0; i < data.length; i++){
-            var optName = $("<option>");
-            optName.val(data[i].employeeId);
-            optName.html(data[i].firstName + " " + data[i].lastName);
-            $("#roleSelect").append(optName);
-        }
-    });
-
     // Handling applicant clicking on 'APPLY' button
-    $("#ApplyButton").on("click", function() {
+    $(".apply-button").on("click", function() {
         var employeeId = sessionStorage.getItem("employeeId");
         var projectId = $(this).data("projectID");
 
@@ -56,11 +46,11 @@ $(function(){
             ProjectProjectId: projectId,
             UserEmployeeId: employeeId,
             status: "submitted"
-        }.done( function(data) {
+        }).done( function(data) {
             console.log("Applied Successfully: " + data)
         }).fail( function(error) {
             // Error handling
-        }));
+        });
     });
 
     // Handling manager/PM clicking on 'APPROVE' SomeButton
