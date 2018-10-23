@@ -1,13 +1,16 @@
 $(function(){
 
-    if(localStorage.getItem("name")){
-        $("#empName").html = ", " + localStorage.getItem("name");
-    }
-
-    var employeeId;
-
-
     $(".modal").show(); // Display dropdown
+
+    if(sessionStorage.getItem("empFName")){
+        $(".empName").html(sessionStorage.getItem("empFName"));
+        $(".empEmail").html(sessionStorage.getItem("empEmail"));
+    }
+  
+    $("#logout").on("click", function(){
+        sessionStorage.clear();
+        window.location.replace("/");
+    });
 
     $.get("/api/users")
     .done(function(data){
@@ -20,15 +23,57 @@ $(function(){
     });
 
     $("#btnRole").on("click", function(){
-        employeeId = $("#roleSelect").val();
+        var employeeId = $("#roleSelect").val();
         $.get("/api/users/" + employeeId)
         .done(function(data){
             //console.log(data);
-            localStorage.setItem("employeeId", data.employeeId);
-            localStorage.setItem("role", data.currentPosition);
-            localStorage.setItem("name", data.firstName);
+            sessionStorage.setItem("employeeId", data.employeeId);
+            sessionStorage.setItem("empFName", data.firstName);
+            sessionStorage.setItem("empLName", data.lastName);
+            sessionStorage.setItem("empRole", data.currentPosition);
+            sessionStorage.setItem("empMgrName", data.managerId);
+            sessionStorage.setItem("empEmail", data.email);
             window.location.replace("/api/projects");
         });
     });
 
+    $.get("/api/users")
+    .done(function(data){
+        for (var i = 0; i < data.length; i++){
+            var optName = $("<option>");
+            optName.val(data[i].employeeId);
+            optName.html(data[i].firstName + " " + data[i].lastName);
+            $("#roleSelect").append(optName);
+        }
+    });
+
+    // Handling applicant clicking on 'APPLY' button
+    $("#ApplyButton").on("click", function() {
+        var employeeId = sessionStorage.getItem("employeeId");
+        var projectId = $(this).data("projectID");
+
+        $.post("/api/applications", {
+            ProjectProjectId: projectId,
+            UserEmployeeId: employeeId,
+            status: "submitted"
+        }.done( function(data) {
+            console.log("Applied Successfully: " + data)
+        }).fail( function(error) {
+            // Error handling
+        }));
+    });
+
+    // Handling manager/PM clicking on 'APPROVE' SomeButton
+    // $("#ApproveButton").on("click", function() {
+    //     applicationId = 'something';
+    //     myRole = 'manager'  // 'manager' or 'pm'
+    //     $.put(`/api/applications/${applicationId}`, {
+    //         myRole + "Approval": true,
+    //         status: myrole + "approved"
+    //     }).done( function(data) {
+    //         // Approved by manager
+    //     }).fail( function(error) {
+    //         // Eror handling
+    //     });
+    // });
 });

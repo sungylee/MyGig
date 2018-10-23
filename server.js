@@ -3,6 +3,14 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
+// Set Handlebars.
+var Handlebars = require("handlebars");
+var exphbs = require("express-handlebars");
+
+// Register moment.js for handlebars
+var MomentHelper = require("handlebars.moment");
+MomentHelper.registerHelpers(Handlebars);
+
 var PORT = process.env.PORT || 3000;
 
 var app = express();
@@ -18,9 +26,6 @@ app.use(bodyParser.json());
 
 // Requiring our models for syncing
 var db = require("./models");
-
-// Set Handlebars.
-var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
