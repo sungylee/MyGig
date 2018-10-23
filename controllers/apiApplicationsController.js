@@ -63,9 +63,9 @@ router.put('/applications/:applicationId', function(req, res) {
                 applicationId: req.params.applicationId
             }
         }
-    ).then(function(application) {
+    ).then(function(result) {
         // returns [ number_of_rows ]
-        res.json(application);
+        res.json(result);
         // When manager approves
         /*
             JSON INPUT is like
