@@ -1,7 +1,10 @@
 var router = require("express").Router();
-var db = require("../models");
-var msgSend = new (require("../Messaging"));
-
+var path = require("path");
+var db = require( path.join(__dirname, "..", "models") );
+// Custom libs
+var msgSend = new (
+    require( path.join(__dirname, "..", "lib", "Messaging") )
+);
 router.post('/notify/:role/:applicationId', function(req, res) {
     console.log(`Hitting post - /api/notify/${req.params.role}/${req.params.applicationId}`);
     //console.log(req.body);

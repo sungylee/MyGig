@@ -1,6 +1,7 @@
 var router = require("express").Router();
 var request = require("request");
-var db = require("../models");
+var path = require("path");
+var db = require( path.join(__dirname, "..", "models") );
 var PORT = process.env.PORT || 3000;    // Be sure to handle different port assigned by Heroku
 var NOTIFYSERVER = `localhost:${PORT}`; // Assume notify server is local
 
@@ -119,6 +120,7 @@ function sendAppliedEmail(params) {
             subject: "Your direct direct import has submitted application",
             body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
         }
+        // TODO: Add notifying PM.
     };
 
     sendEmail({

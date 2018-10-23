@@ -1,5 +1,6 @@
 var router = require("express").Router();
-var db = require("../models");
+var path = require("path");
+var db = require( path.join(__dirname, "..", "models") );
 
 // GET all projects
 router.get('/projects', function(req, res) {
