@@ -38,9 +38,9 @@ $(function(){
     });
 
     // Handling applicant clicking on 'APPLY' button
-    $(".apply-button").on("click", function() {
+    $(document).on("click", ".apply-button", function() {
         var employeeId = sessionStorage.getItem("employeeId");
-        var projectId = $(this).data("projectID");
+        var projectId = $(this).data("projectid");
 
         $.post("/api/applications", {
             ProjectProjectId: projectId,
