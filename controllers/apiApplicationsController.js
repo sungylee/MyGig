@@ -60,19 +60,54 @@ router.put('/applications/:applicationId', function(req, res) {
         req.body,
         {
             where: {
-                projectId: req.params.applicationId
+                applicationId: req.params.applicationId
             }
         }
     ).then(function(application) {
         // returns [ number_of_rows ]
         res.json(application);
-    });
+        // When manager approves
+        /*
+            JSON INPUT is like
+            {
+            "managerApproval": true,
+            "status": "manager approved"
+            }
 
-    // Should put notification upon approval
+        */
+        if ( ('managerApproval' in req.body) &&  (req.body.managerApproval == true) ){
+            // Trigger alerts to applicant and PM
+            sendApprovedEmail({
+                notify: 'applicant',
+                approvedBy: 'manager',
+                applicationId: req.params.applicationId
+            });
+        }
+
+        /*
+             {
+            "pmApproval": true,
+            "status": "pm approved"
+            }
+        */
+        // When PM approves
+        if ( ('pmApproval' in req.body) &&  (req.body.pmApproval == true) ){
+            // Trigger alrt to applicant
+            sendApprovedEmail({
+                notify: 'applicant',
+                approvedBy: 'pm',
+                applicationId: req.params.applicationId
+            });
+        }
+
+    }).catch(function(error) {
+        console.log(error);
+    });
 });
 
 // Wrapper function to determine msg content based off on who we are notifying.
 function sendAppliedEmail(params) {
+    // ToDo: Do we want to attach the link approval page here for the manager?
     var roles = {
         applicant: {
             url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
@@ -84,6 +119,22 @@ function sendAppliedEmail(params) {
             subject: "Your direct direct import has submitted application",
             body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
         }
+    };
+
+    sendEmail({
+        url: roles[params.notify].url,
+        subject: roles[params.notify].subject,
+        body: roles[params.notify].body
+    });
+}
+
+function sendApprovedEmail(params) {
+    var roles = {
+        applicant: {
+            url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
+            subject: "Your application has submitted",
+            body: `Your application id ${params.applicationId} has been approved by ${params.approvedBy}`
+        },
     };
 
     sendEmail({
