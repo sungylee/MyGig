@@ -1,17 +1,31 @@
 var router = require("express").Router();
 var db = require("../models");
 
-// GET all projects
+// GET all users
 router.get('/users', function(req, res) {
     console.log("Hitting get - /api/users");
     db.User.findAll({
     }).then(function(users) {
-        console.log(users);
+        //console.log(users);
         res.json(users);
     });
 });
 
-// POST a new project
+// GET a given user
+router.get('/users/:employeeId', function(req, res) {
+    db.User.findOne(
+        {
+            where: {
+                employeeID: req.params.employeeId
+            }
+        }
+    ).then(function(user) {
+        // console.log(user);
+        res.json(user);
+    });
+});
+
+// POST a new user
 router.post('/users', function(req, res) {
     console.log("Hitting post - /api/users");
     console.log(req.body);
@@ -32,7 +46,7 @@ router.post('/users', function(req, res) {
     });
 });
 
-// UPDATE a given project details
+// UPDATE a given user's details
 router.put('/user/:employeeId', function(req, res) {
     console.log(`Hitting put - /api/projects/:${req.params.employeeId}`);
     console.log(req.body);

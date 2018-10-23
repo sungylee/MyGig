@@ -6,8 +6,12 @@ router.get('/projects', function(req, res) {
     console.log("Hitting get - /api/projects");
     db.Project.findAll({
     }).then(function(projects) {
-        console.log(projects);
-        res.json(projects);
+        var hbsObject = {
+            gigs: projects
+        };
+        console.log(hbsObject);
+        //res.json(projects[0]);
+        res.render("index", hbsObject);
     });
 });
 

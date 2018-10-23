@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>My Next Gig</title>
+  <title>MyGig @ Digital</title>
 
   <!-- Boostrap Stylesheet -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
   <!-- Our own CSS stylesheet -->
-  <link rel="stylesheet" href="./css/style.css" media="screen">
+  <link rel="stylesheet" href="/assets/css/style.css" media="screen">
 
 </head>
 
@@ -21,7 +21,7 @@
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.html" id="logo"> <img src="images/logo.png" height="90" width="100" alt="General Electric">MyGig</a>
+        <a class="navbar-brand" href="/" id="logo"> <img src="/assets/images/logo.png" height="90" width="100" alt="My Gig @ Digital">MyGig</a>
       </div>
       <button class="navbar-toggler collapsed ml-auto" data-toggle="collapse" data-target="#page-nav-collapse" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -54,24 +54,11 @@
   <main class="container">
     <section class="row">
       <div class="col-md-8">
-        <article class="block">
-          <h1 class="block-header">About Me</h1>
+          <h1 class="block-header">Welcome<span id="empName"></span></h1>
           <hr />
-          {{!-- <img src="assets/imgs/natebeach.jpeg" alt="" id="about-image" /> --}}
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <br />
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-          </p>
-        </article>
       </div>
     </section>
-
-    {{{ body }}}
+    {{{body}}}
   </main>
 	<!-- End of container -->
 	
@@ -81,18 +68,23 @@
   <footer class="footer">
     <!-- <div class="two-toned-footer-color"></div> -->
     <p class="text-muted text-muted-footer text-center">
-      &copy; Copyright@MyGig
+      &copy; Copyright
     </p>
   </footer>
   <!-- End of footer -->
 
-<!-- Frontend JS lib import -->
-  <script type="text/javascript" src="/assets/js/gigs.js"></script>
   <!-- jQuery CDN -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!-- Bootstrap CDN -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <!-- Frontend JS lib import -->
+  <script type="text/javascript" src="/assets/js/gigs.js"></script>
+  <script>
+    $("#empName").html(", " + localStorage.getItem("name"));
+  </script>
+
 </body>
 
 </html>

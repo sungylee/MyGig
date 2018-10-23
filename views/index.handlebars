@@ -1,1 +1,13 @@
-placeholer
+
+<h2>Current Gigs</h2>
+<ul>
+  {{#each gigs}}
+    <li>{{this.projectID}}</li>
+    <li>{{this.name}}</li>
+    <li>{{this.description}}</li>
+    <li>{{this.product}}</li>
+    <li>{{this.projectStartDate}}</li>
+    <li>{{this.projectDuration}}</li>
+    <li>{{this.skills}}</li>
+  {{/each}}
+</ul>
