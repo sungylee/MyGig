@@ -1,6 +1,7 @@
 var router = require("express").Router();
 var request = require("request");
-var db = require("../models");
+var path = require("path");
+var db = require( path.join(__dirname, "..", "models") );
 var PORT = process.env.PORT || 3000;    // Be sure to handle different port assigned by Heroku
 var NOTIFYSERVER = `localhost:${PORT}`; // Assume notify server is local
 
@@ -63,9 +64,9 @@ router.put('/applications/:applicationId', function(req, res) {
                 applicationId: req.params.applicationId
             }
         }
-    ).then(function(application) {
+    ).then(function(result) {
         // returns [ number_of_rows ]
-        res.json(application);
+        res.json(result);
         // When manager approves
         /*
             JSON INPUT is like
@@ -79,6 +80,12 @@ router.put('/applications/:applicationId', function(req, res) {
             // Trigger alerts to applicant and PM
             sendApprovedEmail({
                 notify: 'applicant',
+                approvedBy: 'manager',
+                applicationId: req.params.applicationId
+            });
+
+            sendApprovedEmail({
+                notify: 'pm',
                 approvedBy: 'manager',
                 applicationId: req.params.applicationId
             });
@@ -98,8 +105,13 @@ router.put('/applications/:applicationId', function(req, res) {
                 approvedBy: 'pm',
                 applicationId: req.params.applicationId
             });
-        }
 
+            sendApprovedEmail({
+                notify: 'manager',
+                approvedBy: 'pm',
+                applicationId: req.params.applicationId
+            });
+        }
     }).catch(function(error) {
         console.log(error);
     });
@@ -119,6 +131,7 @@ function sendAppliedEmail(params) {
             subject: "Your direct direct import has submitted application",
             body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
         }
+        // TODO: Add notifying PM.
     };
 
     sendEmail({
@@ -135,12 +148,19 @@ function sendApprovedEmail(params) {
             subject: "Your application has submitted",
             body: `Your application id ${params.applicationId} has been approved by ${params.approvedBy}`
         },
+        pm: {
+            url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
+            subject: "Your direct direct import has submitted application",
+            body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
+        }
     };
 
     sendEmail({
         url: roles[params.notify].url,
         subject: roles[params.notify].subject,
         body: roles[params.notify].body
+    }).fail(function(error) {
+        console.log("Failed sending" + error);
     });
 }
 
@@ -161,5 +181,6 @@ function sendEmail(msg) {
         }
     });
 }
+
 
 module.exports = router;
