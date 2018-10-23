@@ -38,7 +38,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
 	phone: {
-		type: DataTypes.INTEGER,
+		type: DataTypes.BIGINT,
 		allowNull: true
 	},
 	skill1: {
