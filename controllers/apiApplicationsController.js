@@ -83,6 +83,12 @@ router.put('/applications/:applicationId', function(req, res) {
                 approvedBy: 'manager',
                 applicationId: req.params.applicationId
             });
+
+            sendApprovedEmail({
+                notify: 'pm',
+                approvedBy: 'manager',
+                applicationId: req.params.applicationId
+            });
         }
 
         /*
@@ -99,8 +105,13 @@ router.put('/applications/:applicationId', function(req, res) {
                 approvedBy: 'pm',
                 applicationId: req.params.applicationId
             });
-        }
 
+            sendApprovedEmail({
+                notify: 'manager',
+                approvedBy: 'pm',
+                applicationId: req.params.applicationId
+            });
+        }
     }).catch(function(error) {
         console.log(error);
     });
@@ -137,12 +148,19 @@ function sendApprovedEmail(params) {
             subject: "Your application has submitted",
             body: `Your application id ${params.applicationId} has been approved by ${params.approvedBy}`
         },
+        pm: {
+            url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
+            subject: "Your direct direct import has submitted application",
+            body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
+        }
     };
 
     sendEmail({
         url: roles[params.notify].url,
         subject: roles[params.notify].subject,
         body: roles[params.notify].body
+    }).fail(function(error) {
+        console.log("Failed sending" + error);
     });
 }
 

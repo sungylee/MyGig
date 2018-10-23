@@ -14,7 +14,7 @@ values (212000003, "siraj", "mohamed", "Employee", "212000005", "siraj.mohamed@g
 insert into users (employeeID, firstName, lastName, currentPosition, managerID, email, phone, createdAt, updatedAt)
 values (212000004, "john", "steskal", "Employee", "212000005", "john.steskal@ge.com", null, now(), now());
 insert into users (employeeID, firstName, lastName, currentPosition, managerID, email, phone, createdAt, updatedAt)
-values (212000005,"sung", "lee", "Product Manager", "2121110001","sung.lee@ge.com", "6783710431",now(), now());
+values (212000005,"sung", "lee", "Product Manager", "2121110001","sung.lee@ge.com", "16783710431",now(), now());
 
 insert into applications (status, UserEmployeeId, ProjectProjectId, createdAt, updatedAt) values ("started", 212000000, 1, now(), now());
 insert into applications (status, UserEmployeeId, ProjectProjectId, createdAt, updatedAt) values ("started", 212000001, 2, now(), now());
