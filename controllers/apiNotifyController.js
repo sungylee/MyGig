@@ -71,6 +71,13 @@ router.post('/notify/:role/:applicationId', function(req, res) {
             case 'applicant':
                 return result.User;
                 break;
+            case 'pm':
+                return db.User.findOne({
+                    where: {
+                        employeeId: result.Project.pmEmployeeId
+                    }
+                });
+                break;
             default:
                 console.log("Unknown role has been selected");
         }
@@ -83,10 +90,23 @@ router.post('/notify/:role/:applicationId', function(req, res) {
             req.body.subject,
             req.body.msg
         ).then(result => {
+            console.log(`Email sent to ${notify.email}`);
             res.end(`Email sent to ${notify.email}`);
         }).catch(err => {
             console.log(err);
         });
+
+        msgSend.sendSMS(
+            notify.phone,
+            req.body.msg
+        ).then(result => {
+            console.log(`SMS sent to ${notify.phone}`);
+            res.end(`SMS sent to ${notify.phone}`);
+        }).catch(err => {
+            console.log(err);
+        });
+
+
     }).catch(function(error) {
         // Error handling here.
     });
