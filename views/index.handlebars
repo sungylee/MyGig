@@ -1,13 +1,41 @@
 
-<h2>Current Gigs</h2>
-<ul>
-  {{#each gigs}}
-    <li>{{this.projectID}}</li>
-    <li>{{this.name}}</li>
-    <li>{{this.description}}</li>
-    <li>{{this.product}}</li>
-    <li>{{this.projectStartDate}}</li>
-    <li>{{this.projectDuration}}</li>
-    <li>{{this.skills}}</li>
-  {{/each}}
-</ul>
+<h2>Hello, <span class="empName"></span>! These Gigs are available</h2>
+<br/><br/>
+<table class="table table-hover" id="accordion">
+    <thead class="thead-dark">
+        <tr>
+            <th>Project ID</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>Duration</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each gigs}}
+        <tr>
+            <td id="hd{{this.projectId}}">
+                <span class="btn btn-link" data-toggle="collapse" data-target="#cl{{this.projectId}}" aria-expanded="true" aria-controls="cl{{this.projectId}}">{{this.projectId}}</span>
+            </td>
+            <td>{{this.name}}</td>
+            <td>{{moment date=this.projectStartDate format="DD/MM/YYYY"}}</td>
+            <td>{{this.projectDuration}} week(s)</td>
+            <td><button class="btn btn-secondary" data-projectID="{{this.projectId}}">Apply</button></td>
+        </tr>
+        <tr id="cl{{this.projectId}}" class="collapse hide" aria-labelledby="hd{{this.projectId}}" data-parent="#accordion">
+            <td colspan="5">
+                <div style="display: table-row-group" class="text-left">
+                    <p><b>Project Name: </b>{{this.name}}</p>
+                    <p><b>Description: </b>{{this.description}}</p>
+                    <p><b>Product: </b>{{this.product}}</p>
+                    <p><b>Start Date: </b>{{moment date=this.projectStartDate format="DD/MM/YYYY"}}</p>
+                    <p><b>Duration: </b>{{this.projectDuration}} week(s)</p>
+                    <p><b>Skills Required: </b>{{this.skills}}</p>
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-info" id="PostButton">Post a Gig</button>

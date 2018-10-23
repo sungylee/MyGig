@@ -2,7 +2,6 @@
 body {
   /* Typography */
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-
   /* Visual */
   /* background-image: url("../imgs/ignasi_pattern_s.png"); */
 }
@@ -55,12 +54,11 @@ main {
 }
 
 .navbar {
-background: #393E46;
-    color: #fff;
-    border-radius: 0;
-    padding: 10px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,.5);
-    position: relative;
+  background: #393E46;
+  color: #fff;
+  border-radius: 0;
+  padding: 0 30px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.5);
 }
 
 
@@ -213,4 +211,11 @@ background: #393E46;
   
 }
 
+table {
+  text-align: center;
+}
+
+#gigPost{
+  margin: 20px;
+}
 /* END CONTACT FORM PAGE */
