@@ -1,12 +1,11 @@
 {
   "development": {
     "username": "root",
-    "password": "bootcamp",
+    "password": "bootcamp"
     "database": "gigazon",
     "host": "127.0.0.1",
     "port": 8889,
-    "dialect": "mysql",
-    "logging": true
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
@@ -17,7 +16,6 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql",
-    "logging": false
+    "dialect": "mysql"
   }
 }
