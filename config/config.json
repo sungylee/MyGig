@@ -1,11 +1,12 @@
 {
   "development": {
     "username": "root",
-    "password": "root", 
+    "password": "root",
     "database": "gigazon",
     "host": "127.0.0.1",
-    "port": 3306,
-    "dialect": "mysql"
+    "port": 8889,
+    "dialect": "mysql",
+    "logging": true
   },
   "test": {
     "username": "root",
@@ -16,6 +17,7 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "logging": false
   }
 }

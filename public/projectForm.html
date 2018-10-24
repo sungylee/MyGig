@@ -30,39 +30,24 @@
                   <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button> -->
-        
+
                 <form class="needs-validation" novalidate>
                         <div class="form-row">
                           <div class="col-md-4 mb-3">
                             <label for="validationTooltip01">Project Name</label>
-                            <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="@example" required>
+                            <input type="text" class="form-control" id="name" placeholder="Project Name" value="Project Name" required>
                             <div class="valid-tooltip">
                               Looks good!
                             </div>
                           </div>
                           <div class="col-md-4 mb-3">
-                            <label for="validationTooltip02">Product name</label>
-                            <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="@example" required>
+                            <label for="validationTooltip02">Product Name</label>
+                            <input type="text" class="form-control" id="product" placeholder="Product Name" value="Product Name" required>
                             <div class="valid-tooltip">
-                              Looks good!
+                              Looks good!∏
                             </div>
                           </div>
-                          <br>          <!-- rchaud-->
-                          <div class="col-md-4 mb-3">
-                            <!-- <label for="validationTooltipUsername">Username</label> -->
-                            <label for="validationTooltipSSO">Project ID</label>
-                            <div class="input-group">
-                              <div class="input-group-prepend">
-                                <!-- <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span> -->
-                                <span class="input-group-text" id="validationTooltipSSOPrepend"></span>
-                              </div>
-                              <!-- <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required> -->
-                              <input type="text" class="form-control" id="validationTooltipSSO" placeholder="project #" aria-describedby="validationTooltipSSOPrepend" required>
-                              <div class="invalid-tooltip">
-                                Please enter a valid project number.
-                              </div>
-                            </div>
-                          </div>
+                          <br>
                         </div>
                         <div class="form-row">
 
@@ -97,7 +82,7 @@
                             <label for="validationTooltip03">Project Short Descriotion</label>
 
                             <!-- <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required> -->
-                            <input type="text" class="form-control" id="validationTooltip03" placeholder="description" required>
+                            <input type="text" class="form-control" id="description" placeholder="Project Description" required>
 
                             <div class="invalid-tooltip">
                               Please provide your current Position.
@@ -107,7 +92,7 @@
                             <!-- <label for="validationTooltip04">State</label> -->
                             <label for="validationTooltip04">Project Duration (weeks)</label>
 
-                            <input type="text" class="form-control" id="validationTooltip04" placeholder="" required>
+                            <input type="text" class="form-control" id="projectDuration" placeholder="(in weeks.  ie: 2)" required>
                             <div class="invalid-tooltip">
                               Please provide duration for this project.
                             </div>
@@ -166,32 +151,30 @@
         <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="javaScript">
                 <label class="form-check-label" for="javaScript">
-                  JavaScript  
+                  JavaScript
                 </label>
                 </div>
 
         <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="jQuery">
                 <label class="form-check-label" for="jQuery">
-                    jQuery  
+                    jQuery
                 </label>
                 </div>
 
         <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="nodeJS">
                 <label class="form-check-label" for="nodeJS">
-                  nodeJS  
+                  nodeJS
                 </label>
                 </div>
-        
+
         <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="SQL">
                 <label class="form-check-label" for="SQL">
-                    SQL  
+                    SQL
                 </label>
                 </div>
-                
-        </form>
 
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
@@ -203,7 +186,13 @@
               <!-- </form><button class="btn btn-primary" type="submit">Submit form</button> -->
               </div>
               <br>
-              <button class="btn btn-primary" type="submit">Submit form</button>
+              <button class="btn btn-primary" id="newProject" type="submit">Submit form</button>
+
+        </form>
+
+
 </div>
+  <!-- Frontend JS lib import -->
+  <script type="text/javascript" src="assets/js/gigs.js"></script>
 </body>
 </html>
