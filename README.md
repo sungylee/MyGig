@@ -47,7 +47,6 @@ List of dependencies
 - plivo: 4.0.3
 - sequelize: 4.39.1
 
-
 ## Technologies Used
 - Bootstrap
 - Node.js
@@ -63,5 +62,19 @@ List of dependencies
 - http://http://localhost:3000
 
 
-
 ## Project notes
+
+Steps Rename from old to new name https://dry-hollows-27871.herokuapp.com/ to
+http://mygigsung.herokuapp.com/
+1)  go into heroku, click on the app, then setting
+2)  you will see a place to "Edit" 
+3)  change from dry-hollows-27871 to mygigsung
+update heroku remote
+$  git remote -v
+heroku  https://git.heroku.com/dry-hollows-27871.git (fetch
+heroku  https://git.heroku.com/dry-hollows-27871.git (push)
+origin  https://github.com/kimchikimchi/MyGig.git (fetch)
+origin  https://github.com/kimchikimchi/MyGig.git (push)
+4) git remote rm heroku
+5) heroku git:remote -a mygigsung
+set git remote heroku to https://git.heroku.com/mygigsung.git
