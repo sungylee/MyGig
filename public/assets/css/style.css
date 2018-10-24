@@ -215,7 +215,11 @@ table {
   text-align: center;
 }
 
-#PostButton{
+#PostButton {
   margin: 20px;
+}
+
+#applyModal {
+  display: none;
 }
 /* END CONTACT FORM PAGE */

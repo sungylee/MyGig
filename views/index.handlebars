@@ -1,6 +1,5 @@
-
 <h2>Hello, <span class="empName"></span>! These Gigs are available</h2>
-<br/><br/>
+<br /><br />
 <table class="table table-hover" id="accordion">
     <thead class="thead-dark">
         <tr>
@@ -15,7 +14,8 @@
         {{#each gigs}}
         <tr>
             <td id="hd{{this.projectId}}">
-                <span class="btn btn-link" data-toggle="collapse" data-target="#cl{{this.projectId}}" aria-expanded="true" aria-controls="cl{{this.projectId}}">{{this.projectId}}</span>
+                <span class="btn btn-link" data-toggle="collapse" data-target="#cl{{this.projectId}}" aria-expanded="true"
+                    aria-controls="cl{{this.projectId}}">{{this.projectId}}</span>
             </td>
             <td>{{this.name}}</td>
             <td>{{moment date=this.projectStartDate format="DD/MM/YYYY"}}</td>
@@ -39,3 +39,13 @@
 </table>
 
 <button type="button" class="btn btn-info" id="PostButton">Post a Gig</button>
+
+<div class="row">
+    <div class="col-md-12">
+        <div id="applyModal" class="modal">
+            <div class="modal-content">
+                <p id="modalMessage" class="text-center"></p>
+            </div>
+        </div>
+    </div>
+</div>
