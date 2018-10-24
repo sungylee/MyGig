@@ -32,7 +32,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user fa-3x"></i>
+            <i class="fas fa-user fa-2x"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <span class="dropdown-item empName">Name</span></a>
@@ -52,6 +52,23 @@
         <h1 class="block-header">Welcome to MyGig</h1>
       </div>
     </div>
+
+    <!-- Begin Post/View Buttons -->
+    <div class="text-center">
+    <a href="projectForm.html">
+      <button class="large-button btn btn-outline-info" id="btnPostGig">
+          <i class="fas fa-edit"></i> Post A Gig
+      </button>
+    </a>
+    <a href="/api/projects">
+      <button class="large-button btn btn-outline-info" id="btnViewGig">
+          <i class="fas fa-eye"></i> View Gigs
+      </button>
+    </a>
+  </div>
+    <!-- End Post/View Buttons -->
+    
+    <!-- Begin modal -->
     <div class="row">
       <div class="col-md-12">
         <div id="roleModal" class="modal">
@@ -69,6 +86,7 @@
         </div>
       </div>
     </div>
+    <!-- End modal -->
   </main>
   <!-- End of container -->
 

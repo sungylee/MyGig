@@ -215,7 +215,19 @@ table {
   text-align: center;
 }
 
-#PostButton{
-  margin: 20px;
+#applyModal {
+  display: none;
+}
+
+.large-button {
+  width: 200px;
+  height: 200px;
+  margin: 40px;
+  padding: 10px;
+  font-size: 22px;
+}
+
+#btnPostGig {
+  display: none
 }
 /* END CONTACT FORM PAGE */

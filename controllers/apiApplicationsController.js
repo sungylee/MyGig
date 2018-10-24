@@ -20,6 +20,7 @@ router.get('/applications', function(req, res) {
 // POST a new project
 router.post('/applications', function(req, res) {
     console.log("Hitting post - /api/applications");
+    console.log(req.body);
     //console.log(req.body);
     /*
         When JSON input from http client is like this:
