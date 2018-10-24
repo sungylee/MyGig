@@ -1,6 +1,6 @@
 $(function(){
 
-    $(".modal").show(); // Display dropdown
+    $("#roleModal").show(); // Display dropdown
 
     if(sessionStorage.getItem("empFName")){
         $(".empName").html(sessionStorage.getItem("empFName"));
@@ -47,9 +47,21 @@ $(function(){
             UserEmployeeId: employeeId,
             status: "submitted"
         }).done( function(data) {
-            console.log("Applied Successfully: " + data)
+            var message = "Congratulations! You have successfully applied for Project ";
+            message += data.ProjectProjectId + "<br/>";
+            message += "Your application Id is " + data.applicationId + "<br/>";
+            message += "All the best!" + "<br/><br/>";
+            //console.log(message);
+            $("#modalMessage").html(message);
+            var OK = $("<p><a href='/api/projects' class='btn btn-dark'>OK</a></p>");
+            $("#modalMessage").append(OK);
+            $("#applyModal").show();
         }).fail( function(error) {
-            // Error handling
+            var message = "Sorry! An error occured. Please try again";
+            $("#modalMessage").html(message);
+            var OK = $("<p><a href='/api/projects' class='btn btn-dark'>OK</a></p>");
+            $("#modalMessage").append(OK);
+            $("#applyModal").show();
         });
     });
 
