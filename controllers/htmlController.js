@@ -6,6 +6,11 @@ router.get('/', function(req, res){
     res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
+router.get('/projectForm.html', function(req, res){
+    console.log("Hitting /projectForm.html");
+    res.sendFile(path.join(__dirname, "..", "public", "projectForm.html"));
+});
+
 router.get('/gigs', function(req, res) {
     res.send("Hitting /gigs");
     console.log("Hitting /gigs");

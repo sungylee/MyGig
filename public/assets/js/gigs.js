@@ -10,7 +10,7 @@ $(function(){
             $(btnPostGig).show()
         }
     }
-  
+
     $("#logout").on("click", function(){
         sessionStorage.clear();
         window.location.replace("/");
@@ -76,17 +76,48 @@ $(function(){
         });
     });
 
+
     // Handling manager/PM clicking on 'APPROVE' SomeButton
-    // $("#ApproveButton").on("click", function() {
-    //     applicationId = 'something';
-    //     myRole = 'manager'  // 'manager' or 'pm'
-    //     $.put(`/api/applications/${applicationId}`, {
-    //         myRole + "Approval": true,
-    //         status: myrole + "approved"
-    //     }).done( function(data) {
-    //         // Approved by manager
-    //     }).fail( function(error) {
-    //         // Eror handling
-    //     });
-    // });
+    $("#ApproveButton").on("click", function() {
+        var employeeId = sessionStorage.getItem("employeeId");
+        var applicationId = $(this).data("applicationid");
+
+        // TODO: How do we determine whether it's pm or manager approval?
+
+         $.put(`/api/applications/${applicationId}`, {
+             "managerApproval": true,
+             // "pmApproval": true,
+             status: "approved"
+         }).done( function(data) {
+             // Approved by manager
+             // Do something to populate the FE.
+         }).fail( function(error) {
+             // Do something to pupulate the FE.
+        });
+    });
+
+
+
+    // PM posts a new project details
+    $("#newProject").on("submit", function() {
+        console.log("Submit new project");
+        var pmEmployeeId = sessionStorage.getItem("employeeId");
+        var applicationId = $(this).data("applicationid");
+
+        // TODO: How do we determine whether it's pm or manager approval?
+
+         $.post("/api/projects", {
+             name: "project name",
+             description: "description",
+             product: "product name",
+             projectDuration: 2,
+             skills: "Lots of it",
+             pmEmployeeId: pmEmployeeId
+         }).done( function(data) {
+             // Approved by manager
+             // Do something to populate the FE.
+         }).fail( function(error) {
+             // Do something to pupulate the FE.
+        });
+    });
 });
