@@ -1,10 +1,14 @@
 $(function(){
 
-    $("#roleModal").show(); // Display dropdown
+    //$("#roleModal").show(); // Display dropdown
 
     if(sessionStorage.getItem("empFName")){
         $(".empName").html(sessionStorage.getItem("empFName"));
         $(".empEmail").html(sessionStorage.getItem("empEmail"));
+        $("#roleModal").hide();
+        if (sessionStorage.getItem("empRole") !== "Employee"){
+            $(btnPostGig).show()
+        }
     }
   
     $("#logout").on("click", function(){
@@ -27,13 +31,20 @@ $(function(){
         $.get("/api/users/" + employeeId)
         .done(function(data){
             //console.log(data);
+            sessionStorage.clear();
             sessionStorage.setItem("employeeId", data.employeeId);
             sessionStorage.setItem("empFName", data.firstName);
             sessionStorage.setItem("empLName", data.lastName);
             sessionStorage.setItem("empRole", data.currentPosition);
             sessionStorage.setItem("empMgrName", data.managerId);
             sessionStorage.setItem("empEmail", data.email);
-            window.location.replace("/api/projects");
+            $(".empName").html(data.firstName);
+            $(".empEmail").html(data.email);
+            if (sessionStorage.getItem("empRole") !== "Employee"){
+                $(btnPostGig).show()
+            }
+            $("#roleModal").hide();
+            //window.location.replace("/api/projects");
         });
     });
 
