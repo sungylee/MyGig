@@ -7,7 +7,7 @@ $(function(){
         $(".empEmail").html(sessionStorage.getItem("empEmail"));
         $("#roleModal").hide();
         if (sessionStorage.getItem("empRole") !== "Employee"){
-            $(btnPostGig).show()
+            $("#btnPostGig").show()
         }
     }
 
@@ -106,7 +106,7 @@ $(function(){
         // var applicationId = $(this).data("applicationid");
         var projectName = $("#projectName").val().trim();
         var productName = $("#productName").val().trim();
-        var projectDesc = $("#projectDescription").val().trim(); 
+        var projectDesc = $("#projectDescription").val().trim();
         var projectDur = $("#projectDuration").val().trim();
         var skillSet = $("#skillSet").val().trim();
         var projectStart = $("#projectStart").val().trim();
