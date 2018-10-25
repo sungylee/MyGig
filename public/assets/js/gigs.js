@@ -99,19 +99,28 @@ $(function(){
 
 
     // PM posts a new project details
-    $("#newProject").on("submit", function() {
+    $("#newProject").on("submit", function(event) {
+        event.preventDefault();
         console.log("Submit new project");
         var pmEmployeeId = sessionStorage.getItem("employeeId");
-        var applicationId = $(this).data("applicationid");
+        // var applicationId = $(this).data("applicationid");
+        var projectName = $("#projectName").val().trim();
+        var productName = $("#productName").val().trim();
+        var projectDesc = $("#projectDescription").val().trim(); 
+        var projectDur = $("#projectDuration").val().trim();
+        var skillSet = $("#skillSet").val().trim();
+        var projectStart = $("#projectStart").val().trim();
+
 
         // TODO: How do we determine whether it's pm or manager approval?
 
          $.post("/api/projects", {
-             name: "project name",
-             description: "description",
-             product: "product name",
-             projectDuration: 2,
-             skills: "Lots of it",
+             name: projectName,
+             description: projectDesc,
+             product: productName,
+             projectDuration: projectDur,
+             skills: skillSet,
+             projectStartDate: projectStart,
              pmEmployeeId: pmEmployeeId
          }).done( function(data) {
              // Approved by manager

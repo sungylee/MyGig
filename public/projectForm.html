@@ -1,198 +1,161 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <!-- <script src="main.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>MyGig @ Digital Projects</title>
+
+  <!-- Boostrap Stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+    crossorigin="anonymous">
+
+  <!-- Our own CSS stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" media="screen">
+
 </head>
+
 <body>
-<div id="container">
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <a class="navbar-brand" href="/" id="logo"> <img src="assets/images/logo.png" height="90" width=auto alt="My Gig @ Digital">MyGig</a>
+    <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#page-nav-collapse"
+      aria-expanded="false" aria-controls="page-nav-collapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="page-nav-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user fa-2x"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <span class="dropdown-item empName">Name</span></a>
+            <span class="dropdown-item empEmail">Email Address</span>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" id="logout">Logout</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-        <form>
-                <!-- <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <div class="form-group form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button> -->
-
-                <form class="needs-validation" novalidate>
-                        <div class="form-row">
-                          <div class="col-md-4 mb-3">
-                            <label for="validationTooltip01">Project Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Project Name" value="Project Name" required>
-                            <div class="valid-tooltip">
-                              Looks good!
-                            </div>
-                          </div>
-                          <div class="col-md-4 mb-3">
-                            <label for="validationTooltip02">Product Name</label>
-                            <input type="text" class="form-control" id="product" placeholder="Product Name" value="Product Name" required>
-                            <div class="valid-tooltip">
-                              Looks good!∏
-                            </div>
-                          </div>
-                          <br>
-                        </div>
-                        <div class="form-row">
-
-                                <!-- <div class="col-md-4 mb-3">
-                                        <label for="validationTooltipEmail">Email Address</label>
-                                        <div class="input-group">
-                                          <div class="input-group-prepend">
-                                            <span class="input-group-text" id="validationTooltipEmailPrepend">@</span>
-                                          </div>
-                                          <input type="text" class="form-control" id="validationTooltipEmail" placeholder="Email" aria-describedby="validationTooltipEmailPrepend" required>
-                                          <div class="invalid-tooltip">
-                                            Please enter a valid email address.
-                                          </div>
-                                        </div>
+  <!-- Start of container -->
+  <div id="container" style="margin-left:20px">
+    
+      <br>
+              <form>
+                <br>
+      
+      
+                      <form class="needs-validation" novalidate>
+                              <div class="form-row">
+                                <div class="col-md-4 mb-3">
+                                  <label for="validationTooltip01">Project Name</label>
+                                  <input type="text" class="form-control" id="projectName" placeholder="Project Name"  required>
+                                  <div class="valid-tooltip">
+                                    Looks good!
+                                  </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                  <label for="validationTooltip02">Product Name</label>
+                                  <input type="text" class="form-control" id="productName" placeholder="Product Name"  required>
+                                  <div class="valid-tooltip">
+                                    Looks good!∏
+                                  </div>
+                                </div>
+                                <br>
+                              </div>
+                              <div class="form-row">
+      
+                                <div class="col-lg-8 mb-3">
+                                  <label for="validationTooltip03">Project Short Description</label>
+      
+                                  <input type="text" class="form-control" id="projectDescription" placeholder="Project Description" required>
+      
+                                  <div class="invalid-tooltip">
+                                  </div>
+                                </div>
+                              </div>
+      
+      
+      
+                              <div class="form-row">
+      
+      
+                                  <div class="col-md-3 mb-3">
+                                      <label for="validationTooltip04">Project Start date</label>
+          
+                                      <input type="text" class="form-control" id="projectStart" placeholder="YYYY-MM-DD" required>
+                                      <div class="invalid-tooltip">
+                                        Please provide start date for this project.
                                       </div>
-                                      <div class="col-md-4 mb-3">
-                                            <label for="validationTooltipPhone">Phone Number</label>
-                                            <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text" id="validationTooltipPhonePrepend">#</span>
-                                              </div>
-                                              <input type="text" class="form-control" id="validationTooltipPhone" placeholder="###-###-####" aria-describedby="validationTooltipPhonePrepend" required>
-                                              <div class="invalid-tooltip">
-                                                Please enter a valid email address.
-                                              </div>
-                                            </div>
-                                          </div> -->
-
-
-
-                          <div class="col-md-6 mb-3">
-                            <label for="validationTooltip03">Project Short Descriotion</label>
-
-                            <!-- <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required> -->
-                            <input type="text" class="form-control" id="description" placeholder="Project Description" required>
-
-                            <div class="invalid-tooltip">
-                              Please provide your current Position.
-                            </div>
-                          </div>
-                          <div class="col-md-3 mb-3">
-                            <!-- <label for="validationTooltip04">State</label> -->
-                            <label for="validationTooltip04">Project Duration (weeks)</label>
-
-                            <input type="text" class="form-control" id="projectDuration" placeholder="(in weeks.  ie: 2)" required>
-                            <div class="invalid-tooltip">
-                              Please provide duration for this project.
-                            </div>
-                          </div>
-                          <!-- <div class="col-md-3 mb-3">
-                            <label for="validationTooltip05">Zip</label>
-
-                            <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
-                            <div class="invalid-tooltip">
-                              Please provide a valid zip.
-                            </div>
-                          </div> -->
-                        </div>
-
-                        <div class="form-row">
-                                <!-- <div class="col-md-4 mb-3">
-                                        <label for="validationTooltipPasswordC">Create password</label>
-                                        <div class="input-group">
-                                          <div class="input-group-prepend">
-                                            <span class="input-group-text" id="validationTooltipPasswordCPrepend"></span>
-                                          </div>
-                                          <input type="text" class="form-control" id="validationTooltipPasswordC" type="password" placeholder="••••••••" aria-describedby="validationTooltipPasswordCPrepend" required>
-                                          <div class="invalid-tooltip">
-                                            Please enter a valid password.
-                                          </div>
-                                        </div>
+                                    </div>
+      
+                                  <div class="col-md-3 mb-3">
+                                      <label for="validationTooltip04">Project Duration (weeks)</label>
+          
+                                      <input type="text" class="form-control" id="projectDuration" placeholder="(in weeks.  ie: 2)" required>
+                                      <div class="invalid-tooltip">
+                                        Please provide duration for this project.
                                       </div>
-                                      <div class="col-md-4 mb-3">
-                                            <label for="validationTooltipPasswordV">Verify password</label>
-                                            <div class="input-group">
-                                              <div class="input-group-prepend">
-                                                <span class="input-group-text" id="validationTooltipPasswordVPrepend"></span>
-                                              </div>
-                                              <input type="text" class="form-control" id="validationTooltipPasswordV" type="password" placeholder="••••••••" aria-describedby="validationTooltipPasswordVPrepend" required>
-                                              <div class="invalid-tooltip">
-                                                Please enter a valid password.
-                                              </div>
-                                            </div>
-                                          </div> -->
-
-
-                        </div>
-
-
-                        <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-                      <!-- </form> -->
-
-                      <!-- CheckBoxes start here-->
-                        <br>
-                      <h6> Please check the  boxes of the required skillsets for this project</h6>
-
+                                    </div>
+      
+      
+                              </div>
+      
+      
+                              <br>
+                            <br>
+      
+      
+              <div class="form-row">
+      
+                  <div class="col-md-6 mb-3">
+                      <label for="validationTooltip05">Desired skills</label>
                       <br>
+                      <p> Please enter the required skillsets for this project separated by commas</p>
+      
+                      <input type="text" class="form-control" id="skillSet" placeholder="HTML, JavaScript, node.JS etc." required>
+      
+                      <div class="invalid-tooltip">
+                        Please provide your current Position.
+                      </div>
+                    </div>
+      
+                    </div>
+                    <br>
+                    <button class="btn btn-info" id="newProject" type="submit">Submit form</button>
+      
+              </form>
+      
+      
+      </div>
+  <!-- End of container -->
 
-        <div class="form-row">
+  <!-- Start of footer -->
+  <!-- <footer class="footer"> -->
+    <!-- <div class="two-toned-footer-color"></div> -->
+    <!-- <p class="text-muted text-muted-footer text-center">
+      &copy; Copyright
+    </p>
+  </footer> -->
+  <!-- End of footer -->
 
-        <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="javaScript">
-                <label class="form-check-label" for="javaScript">
-                  JavaScript
-                </label>
-                </div>
+  <!-- jQuery CDN -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-        <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="jQuery">
-                <label class="form-check-label" for="jQuery">
-                    jQuery
-                </label>
-                </div>
+  <!-- Bootstrap CDN -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-        <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="nodeJS">
-                <label class="form-check-label" for="nodeJS">
-                  nodeJS
-                </label>
-                </div>
-
-        <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="SQL">
-                <label class="form-check-label" for="SQL">
-                    SQL
-                </label>
-                </div>
-
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                <label class="form-check-label" for="defaultCheck2">
-                  Disabled checkbox
-                </label>
-              </div>
-              <!-- <button class="btn btn-primary" type="submit">Submit form</button> -->
-              <!-- </form><button class="btn btn-primary" type="submit">Submit form</button> -->
-              </div>
-              <br>
-              <button class="btn btn-primary" id="newProject" type="submit">Submit form</button>
-
-        </form>
-
-
-</div>
   <!-- Frontend JS lib import -->
-  <script type="text/javascript" src="assets/js/gigs.js"></script>
+  <script type="text/javascript" src="assets/js/projects.js"></script>
+
 </body>
+
 </html>
