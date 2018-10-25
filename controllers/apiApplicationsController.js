@@ -42,7 +42,7 @@ router.post('/applications', function(req, res) {
             projectId: req.body.ProjectProjectId,
             applicationId: application.applicationId
         });
-/*
+
         notifyApply({
             notify: 'manager',
             projectId: req.body.ProjectProjectId,
@@ -54,7 +54,6 @@ router.post('/applications', function(req, res) {
             projectId: req.body.ProjectProjectId,
             applicationId: application.applicationId
         });
-*/
     }).catch(function(error) {
         //TODO:  Should build a better query result check in case of failures.
         console.log(error);
@@ -127,30 +126,6 @@ router.put('/applications/:applicationId', function(req, res) {
 
 // Wrapper function to determine msg content based off on who we are notifying.
 function notifyApply(params) {
-
-    // ToDo: Do we want to attach the link approval page here for the manager?
-    /*
-    var roles = {
-        applicant: {
-            url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
-            subject: "Your application has submitted",
-            body: `Your application for project id: ${params.projectId} has been submitted.  Your application id is ${params.applicationId}.`
-        },
-        manager: {
-            url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
-            subject: "Your direct direct import has submitted application",
-            body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
-        }
-        // TODO: Add notifying PM.
-    };
-
-    notify({
-        url: roles[params.notify].url,
-        subject: roles[params.notify].subject,
-        body: roles[params.notify].body
-    });
-    */
-
     db.Application.findOne({
         where: {
             applicationId: params.applicationId
@@ -167,7 +142,7 @@ function notifyApply(params) {
             manager: {
                 url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
                 subject: "Your direct direct import has submitted application",
-                body: `Your direct report's application for project ${result.Project.name} has been submitted.  His/Her application id is ${params.applicationId}.`
+                body: `${result.User.lastName}, ${result.User.firstName}'s application for project ${result.Project.name} has been submitted.  His/Her application id is ${params.applicationId}.`
             },
             pm: {
                 url: `http://${NOTIFYSERVER}/api/notify/pm/${params.applicationId}`,
@@ -188,30 +163,6 @@ function notifyApply(params) {
 }
 
 function notifyApproved(params) {
-    /*
-    var roles = {
-        applicant: {
-            url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
-            subject: "Your application has submitted",
-            body: `Your application id ${params.applicationId} has been approved by ${params.approvedBy}`
-        },
-        pm: {
-            url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
-            subject: "Your direct direct import has submitted application",
-            body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
-        }
-    };
-    */
-
-    /*
-    notify({
-        url: roles[params.notify].url,
-        subject: roles[params.notify].subject,
-        body: roles[params.notify].body
-    }).fail(function(error) {
-        console.log("Failed sending" + error);
-    });
-    */
     db.Application.findOne({
         where: {
             applicationId: params.applicationId
