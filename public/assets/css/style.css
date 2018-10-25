@@ -219,6 +219,10 @@ table {
   display: none;
 }
 
+#projectModal{
+  display: none;
+}
+
 .large-button {
   width: 200px;
   height: 200px;
@@ -229,5 +233,9 @@ table {
 
 #btnPostGig {
   display: none
+}
+
+#container{
+  margin: 30px 0 0 30px;
 }
 /* END CONTACT FORM PAGE */

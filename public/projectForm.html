@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>MyGig @ Digital Projects</title>
+  <title>MyGig @ Digital | New Project</title>
 
   <!-- Boostrap Stylesheet -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -46,102 +46,85 @@
   </nav>
 
   <!-- Start of container -->
-  <div id="container" style="margin-left:20px">
-    
-      <br>
-              <form>
-                <br>
-      
-      
-                      <form class="needs-validation" novalidate>
-                              <div class="form-row">
-                                <div class="col-md-4 mb-3">
-                                  <label for="validationTooltip01">Project Name</label>
-                                  <input type="text" class="form-control" id="projectName" placeholder="Project Name"  required>
-                                  <div class="valid-tooltip">
-                                    Looks good!
-                                  </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                  <label for="validationTooltip02">Product Name</label>
-                                  <input type="text" class="form-control" id="productName" placeholder="Product Name"  required>
-                                  <div class="valid-tooltip">
-                                    Looks good!∏
-                                  </div>
-                                </div>
-                                <br>
-                              </div>
-                              <div class="form-row">
-      
-                                <div class="col-lg-8 mb-3">
-                                  <label for="validationTooltip03">Project Short Description</label>
-      
-                                  <input type="text" class="form-control" id="projectDescription" placeholder="Project Description" required>
-      
-                                  <div class="invalid-tooltip">
-                                  </div>
-                                </div>
-                              </div>
-      
-      
-      
-                              <div class="form-row">
-      
-      
-                                  <div class="col-md-3 mb-3">
-                                      <label for="validationTooltip04">Project Start date</label>
-          
-                                      <input type="text" class="form-control" id="projectStart" placeholder="YYYY-MM-DD" required>
-                                      <div class="invalid-tooltip">
-                                        Please provide start date for this project.
-                                      </div>
-                                    </div>
-      
-                                  <div class="col-md-3 mb-3">
-                                      <label for="validationTooltip04">Project Duration (weeks)</label>
-          
-                                      <input type="text" class="form-control" id="projectDuration" placeholder="(in weeks.  ie: 2)" required>
-                                      <div class="invalid-tooltip">
-                                        Please provide duration for this project.
-                                      </div>
-                                    </div>
-      
-      
-                              </div>
-      
-      
-                              <br>
-                            <br>
-      
-      
-              <div class="form-row">
-      
-                  <div class="col-md-6 mb-3">
-                      <label for="validationTooltip05">Desired skills</label>
-                      <br>
-                      <p> Please enter the required skillsets for this project separated by commas</p>
-      
-                      <input type="text" class="form-control" id="skillSet" placeholder="HTML, JavaScript, node.JS etc." required>
-      
-                      <div class="invalid-tooltip">
-                        Please provide your current Position.
-                      </div>
-                    </div>
-      
-                    </div>
-                    <br>
-                    <button class="btn btn-info" id="newProject" type="submit">Submit form</button>
-      
-              </form>
-      
-      
+  <div id="container">
+    <form class="needs-validation" novalidate>
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationTooltip01">Project Name</label>
+          <input type="text" class="form-control" id="projectName" placeholder="Project Name" required>
+          <div class="valid-tooltip">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationTooltip02">Product Name</label>
+          <input type="text" class="form-control" id="productName" placeholder="Product Name" required>
+          <div class="valid-tooltip">
+            Looks good!
+          </div>
+        </div>
       </div>
+
+      <div class="form-row">
+        <div class="col-md-8 mb-3">
+          <label for="validationTooltip03">Project Short Description</label>
+          <textarea rows=2 type="text" class="form-control" id="projectDescription" placeholder="Project Description"
+            required></textarea>
+          <div class="invalid-tooltip">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col-md-4 mb-3">
+          <label for="validationTooltip04">Project Start date</label>
+          <input type="text" class="form-control" id="projectStart" placeholder="YYYY-MM-DD" required>
+          <div class="invalid-tooltip">
+            Please provide start date for this project.
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="validationTooltip05">Project Duration (weeks)</label>
+          <input type="text" class="form-control" id="projectDuration" placeholder="(in weeks.  ie: 2)" required>
+          <div class="invalid-tooltip">
+            Please provide duration for this project.
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div class="form-row">
+        <div class="col-md-8 mb-3">
+          <label for="validationTooltip06">Desired skills</label>
+          <p><em>(Please enter the required skillsets for this project separated by commas)</em></p>
+          <input type="text" class="form-control" id="skillSet" placeholder="HTML, JavaScript, node.JS etc." required>
+          <div class="invalid-tooltip">
+            Please list the skills required for this project.
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-info" id="newProject" type="submit"><i class="fas fa-arrow-circle-right"></i> Submit</button>
+      <button class="btn btn-danger" id="cancel" type="button"><i class="fas fa-times"></i> Cancel</button>
+    </form>
+
+    <!-- Begin project confirmation modal -->
+    <div class="row">
+      <div class="col-md-12">
+        <div id="projectModal" class="modal">
+          <div class="modal-content">
+            <p id="modalMessage" class="text-center"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End project confirmation modal -->
+  </div>
   <!-- End of container -->
 
   <!-- Start of footer -->
   <!-- <footer class="footer"> -->
-    <!-- <div class="two-toned-footer-color"></div> -->
-    <!-- <p class="text-muted text-muted-footer text-center">
+  <!-- <div class="two-toned-footer-color"></div> -->
+  <!-- <p class="text-muted text-muted-footer text-center">
       &copy; Copyright
     </p>
   </footer> -->
