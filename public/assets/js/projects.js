@@ -1,6 +1,20 @@
 $(function(){
 
-    // PM posts a new project details
+    if(sessionStorage.getItem("empFName")){
+        $(".empName").html(sessionStorage.getItem("empFName"));
+        $(".empEmail").html(sessionStorage.getItem("empEmail"));
+    }
+
+    $("#logout").on("click", function(){
+        sessionStorage.clear();
+        window.location.replace("/");
+    });
+
+    $("#cancel").on("click", function(){
+        window.location.replace("/");
+    });
+
+    // PM posts new project details
     $("#newProject").on("click", function(event) {
         event.preventDefault();
         console.log("Submit new project");
@@ -12,10 +26,6 @@ $(function(){
         var projectDur = $("#projectDuration").val().trim();
         var skillSet = $("#skillSet").val().trim();
         var projectStart = $("#projectStart").val().trim();
-
-
-        // TODO: How do we determine whether it's pm or manager approval?
-
          $.post("/api/projects", {
              name: projectName,
              description: projectDesc,
@@ -27,10 +37,19 @@ $(function(){
          }).done( function(data) {
             $(".form-control").text("");
             $(".form-control").val("");
-             // Approved by manager
-             // Do something to populate the FE.
+            var message = "Your project has been successfully posted." + "<br/>";
+            message += "Project ID: " + data.projectId + "<br/><br/>";
+            console.log(message);
+            $("#modalMessage").html(message);
+            var OK = $("<p><a href='/api/projects' class='btn btn-dark'>OK</a></p>");
+            $("#modalMessage").append(OK);
+            $("#projectModal").show();
          }).fail( function(error) {
-             // Do something to pupulate the FE.
+            var message = "Sorry! An error occured. Please try again";
+            $("#modalMessage").html(message);
+            var OK = $("<p><a href='/api/projects' class='btn btn-dark'>OK</a></p>");
+            $("#modalMessage").append(OK);
+            $("#projectModal").show();
         });
     });
 });
