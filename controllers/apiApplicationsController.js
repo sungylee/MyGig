@@ -37,17 +37,24 @@ router.post('/applications', function(req, res) {
         res.json(application);
         return application;
     }).then(application => {
-        sendAppliedEmail({
+        notifyApply({
             notify: 'applicant',
             projectId: req.body.ProjectProjectId,
             applicationId: application.applicationId
         });
-
-        sendAppliedEmail({
+/*
+        notifyApply({
             notify: 'manager',
             projectId: req.body.ProjectProjectId,
             applicationId: application.applicationId
         });
+
+        notifyApply({
+            notify: 'pm',
+            projectId: req.body.ProjectProjectId,
+            applicationId: application.applicationId
+        });
+*/
     }).catch(function(error) {
         //TODO:  Should build a better query result check in case of failures.
         console.log(error);
@@ -79,13 +86,13 @@ router.put('/applications/:applicationId', function(req, res) {
         */
         if ( ('managerApproval' in req.body) &&  (req.body.managerApproval == true) ){
             // Trigger alerts to applicant and PM
-            sendApprovedEmail({
+            notifyApproved({
                 notify: 'applicant',
                 approvedBy: 'manager',
                 applicationId: req.params.applicationId
             });
 
-            sendApprovedEmail({
+            notifyApproved({
                 notify: 'pm',
                 approvedBy: 'manager',
                 applicationId: req.params.applicationId
@@ -101,13 +108,13 @@ router.put('/applications/:applicationId', function(req, res) {
         // When PM approves
         if ( ('pmApproval' in req.body) &&  (req.body.pmApproval == true) ){
             // Trigger alrt to applicant
-            sendApprovedEmail({
+            notifyApproved({
                 notify: 'applicant',
                 approvedBy: 'pm',
                 applicationId: req.params.applicationId
             });
 
-            sendApprovedEmail({
+            notifyApproved({
                 notify: 'manager',
                 approvedBy: 'pm',
                 applicationId: req.params.applicationId
@@ -119,8 +126,10 @@ router.put('/applications/:applicationId', function(req, res) {
 });
 
 // Wrapper function to determine msg content based off on who we are notifying.
-function sendAppliedEmail(params) {
+function notifyApply(params) {
+
     // ToDo: Do we want to attach the link approval page here for the manager?
+    /*
     var roles = {
         applicant: {
             url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
@@ -135,14 +144,51 @@ function sendAppliedEmail(params) {
         // TODO: Add notifying PM.
     };
 
-    sendEmail({
+    notify({
         url: roles[params.notify].url,
         subject: roles[params.notify].subject,
         body: roles[params.notify].body
     });
+    */
+
+    db.Application.findOne({
+        where: {
+            applicationId: params.applicationId
+        },
+        include: [db.User, db.Project]
+    }).then(result => {
+
+        var roles = {
+            applicant: {
+                url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
+                subject: "Your application has submitted",
+                body: `Your application for project "${result.Project.name}" has been submitted.  Your application id is ${params.applicationId}.`
+            },
+            manager: {
+                url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
+                subject: "Your direct direct import has submitted application",
+                body: `Your direct report's application for project ${result.Project.name} has been submitted.  His/Her application id is ${params.applicationId}.`
+            },
+            pm: {
+                url: `http://${NOTIFYSERVER}/api/notify/pm/${params.applicationId}`,
+                subject: "Your direct direct import has submitted application",
+                body: `A new application has been submitted by ${result.User.lastName}  ${result.User.firstName} for project ${result.Project.name}. His/Her application id is ${params.applicationId}.`
+            },
+        };
+
+        notify({
+            url: roles[params.notify].url,
+            subject: roles[params.notify].subject,
+            body: roles[params.notify].body
+        });
+
+    }).catch(function(error) {
+        console.log(error);
+    });
 }
 
-function sendApprovedEmail(params) {
+function notifyApproved(params) {
+    /*
     var roles = {
         applicant: {
             url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
@@ -155,18 +201,49 @@ function sendApprovedEmail(params) {
             body: `Your direct report's application for project id: ${params.projectId} has been submitted.  His/Her application id is ${params.applicationId}.`
         }
     };
+    */
 
-    sendEmail({
+    /*
+    notify({
         url: roles[params.notify].url,
         subject: roles[params.notify].subject,
         body: roles[params.notify].body
     }).fail(function(error) {
         console.log("Failed sending" + error);
     });
+    */
+    db.Application.findOne({
+        where: {
+            applicationId: params.applicationId
+        },
+        include: [db.User, db.Project]
+    }).then(result => {
+        var roles = {
+            applicant: {
+                url: `http://${NOTIFYSERVER}/api/notify/applicant/${params.applicationId}`,
+                subject: "Your application has submitted",
+                body: `Your application id ${params.applicationId} for "${result.Project.name}" has been approved by ${params.approvedBy}`
+            },
+            pm: {
+                url: `http://${NOTIFYSERVER}/api/notify/manager/${params.applicationId}`,
+                subject: "Your direct direct import has submitted application",
+                body: `Your direct report's application for project id: ${params.projectId} for "${result.Project.name}" has been submitted.  His/Her application id is ${params.applicationId}.`
+            }
+        };
+
+        notify({
+            url: roles[params.notify].url,
+            subject: roles[params.notify].subject,
+            body: roles[params.notify].body
+        });
+
+    }).catch(function(error) {
+        console.log(error);
+    });
 }
 
 // Method to make the API call to trigger email send
-function sendEmail(msg) {
+function notify(msg) {
     request({
         method: 'POST',
         url: msg.url,
@@ -180,6 +257,8 @@ function sendEmail(msg) {
             console.error('error posting json: ', err);
             throw err;
         }
+
+        console.log(`Got res.statusCode ${res.statusCode}`);
     });
 }
 
