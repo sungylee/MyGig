@@ -1,17 +1,18 @@
 # MyGig
 Project 2 for GE Bootcamp
 
-Background:
 “MyGig at Digital”
 
 MyGig is a web based application used to track and manage an internal project postings to be utilized by project managers and employees.  Project managers can post new projects(next gig) and employees can view and apply for next gig.   This tool allows our company to tap into deep domain knowledge of our employees skill sets and for employees to work on project outside of normal work functions.  
 
 Key features:
 SMS/Email integration for notification and approval 
+User Authorization / Tracking / RBAC
+View / Post / Apply to Gigs
 
 ## Live Demo Page
 
- https://morning-plains-72691.herokuapp.com
+ https://mygigsdigital.herokuapp.com
 
 ## Team Members
 - [Jay Cha](https://www.linkedin.com/in/jay-cha-b8329714/)
@@ -48,19 +49,13 @@ List of dependencies
 - sequelize: 4.39.1
 
 ## Technologies Used
-- Bootstrap
-- Node.js
-- MySql
-- Sequelize
-- Express Handlebars
-- Express
-- Heroku
-- Plivo
+- Model: MySQL / Sequelize
+- Controller: Node / Express / Handlebars / Plivo / Mailjet
+- View: HTML / Bootstrap / jQuery / Moment
 
 ## How to run locally
 - node server.js
 - http://http://localhost:3000
-
 
 ## Project notes
 
@@ -78,3 +73,9 @@ origin  https://github.com/kimchikimchi/MyGig.git (push)
 4) git remote rm heroku
 5) heroku git:remote -a mygigsung
 set git remote heroku to https://git.heroku.com/mygigsung.git
+
+## Screen Shots
+
+![image](https://user-images.githubusercontent.com/40503899/47469815-e03c0780-d7d0-11e8-95a5-f9201ed87624.png)
+
+![image](https://user-images.githubusercontent.com/40503899/47469852-0d88b580-d7d1-11e8-8920-9fa773ea2c4c.png)
