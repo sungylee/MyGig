@@ -25,7 +25,6 @@ View / Post / Apply to Gigs
 
 - [Sung Lee](https://www.linkedin.com/in/sunglee/) 
 
-
 ## Getting Started
 
 - Clone mygig repository (https://github.com/kimchikimchi/MyGig.git) 
@@ -49,13 +48,15 @@ List of dependencies
 - sequelize: 4.39.1
 
 ## Technologies Used
+
 - Model: MySQL / Sequelize
 - Controller: Node / Express / Handlebars / Plivo / Mailjet
 - View: HTML / Bootstrap / jQuery / Moment
 
 ## How to run locally
+
 - node server.js
-- http://http://localhost:3000
+- http://localhost:3000
 
 ## Project notes
 
@@ -78,4 +79,6 @@ set git remote heroku to https://git.heroku.com/mygigsung.git
 
 ![image](https://user-images.githubusercontent.com/40503899/47469815-e03c0780-d7d0-11e8-95a5-f9201ed87624.png)
 
-![image](https://user-images.githubusercontent.com/40503899/47469852-0d88b580-d7d1-11e8-8920-9fa773ea2c4c.png)
+![image](https://user-images.githubusercontent.com/40503899/47470426-af110680-d7d3-11e8-8b40-cbce5112baff.png)
+
+![image](https://user-images.githubusercontent.com/40503899/47470321-3e69ea00-d7d3-11e8-80f0-ad82e1b9f62d.png)
