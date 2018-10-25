@@ -60,7 +60,7 @@ List of dependencies
 
 ## Project notes
 
-Steps Rename from old to new name https://dry-hollows-27871.herokuapp.com/ to
+- Steps Rename from old to new name https://dry-hollows-27871.herokuapp.com/ to
 http://mygigsung.herokuapp.com/
 1)  go into heroku, click on the app, then setting
 2)  you will see a place to "Edit" 
@@ -75,10 +75,11 @@ origin  https://github.com/kimchikimchi/MyGig.git (push)
 5) heroku git:remote -a mygigsung
 set git remote heroku to https://git.heroku.com/mygigsung.git
 
-## Screen Shots
+- [MyGig Databased Design.pdf](https://github.com/kimchikimchi/MyGig/files/2515889/MyGig.Databased.Design.pdf)
 
-![image](https://user-images.githubusercontent.com/40503899/47469815-e03c0780-d7d0-11e8-95a5-f9201ed87624.png)
+- [MyGigs Workflow .pdf](https://github.com/kimchikimchi/MyGig/files/2515894/MyGigs.Workflow.pdf)
 
-![image](https://user-images.githubusercontent.com/40503899/47470426-af110680-d7d3-11e8-8b40-cbce5112baff.png)
 
-![image](https://user-images.githubusercontent.com/40503899/47470321-3e69ea00-d7d3-11e8-80f0-ad82e1b9f62d.png)
+## Screen Shots demo
+
+![mygigs_demo](https://user-images.githubusercontent.com/40503899/47515194-2dab8980-d850-11e8-9b9f-18e80a3019a4.gif)
