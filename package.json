@@ -1,0 +1,35 @@
+{
+  "name": "MyGig",
+  "version": "1.0.0",
+  "description": "Project 2 for GE Bootcamp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "npx nodemon ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimchikimchi/MyGig.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kimchikimchi/MyGig/issues"
+  },
+  "homepage": "https://github.com/kimchikimchi/MyGig#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.12",
+    "handlebars.moment": "^1.0.4",
+    "mysql": "^2.16.0",
+    "mysql2": "^1.6.1",
+    "node-mailjet": "^3.3.1",
+    "plivo": "^4.0.3",
+    "sequelize": "^4.39.1"
+  }
+}

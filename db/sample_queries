@@ -1,0 +1,6 @@
+-- How to look up manager's info based on employee ID.
+SELECT manager.*
+  FROM Users employee
+			INNER JOIN
+	   Users manager ON employee.managerId = manager.employeeId
+WHERE employee.employeeID = 212000000;
